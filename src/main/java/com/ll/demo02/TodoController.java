@@ -17,6 +17,11 @@ public class TodoController {
         todos = new ArrayList<>();
     }
 
+    @GetMapping("")
+    public List<Todo> getTodos() {
+        return todos;
+    }
+
     @GetMapping("/add")
     public Todo add(
             String body
