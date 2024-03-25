@@ -1,6 +1,7 @@
 package com.ll.demo02;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,19 @@ public class TodoController {
     @GetMapping("")
     public List<Todo> getTodos() {
         return todos;
+    }
+
+    @GetMapping("/detail")
+    public Todo getTodo(
+            long id
+    ) {
+        return todos
+                .stream()
+                .filter(
+                        todo -> todo.getId() == id
+                )
+                .findFirst()
+                .orElse(null);
     }
 
     @GetMapping("/add")
