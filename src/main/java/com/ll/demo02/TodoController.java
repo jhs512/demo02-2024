@@ -36,6 +36,19 @@ public class TodoController {
                 .orElse(null);
     }
 
+    @GetMapping("/{id}")
+    public Todo getTodo2(
+            @PathVariable long id
+    ) {
+        return todos
+                .stream()
+                .filter(
+                        todo -> todo.getId() == id
+                )
+                .findFirst()
+                .orElse(null);
+    }
+
     @GetMapping("/add")
     public Todo add(
             String body
