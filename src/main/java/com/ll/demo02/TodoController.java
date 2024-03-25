@@ -63,4 +63,13 @@ public class TodoController {
 
         return todo;
     }
+
+    @GetMapping("/remove/{id}")
+    public boolean remove(
+            @PathVariable long id
+    ) {
+        boolean removed = todos.removeIf((todo -> todo.getId() == id));
+
+        return removed;
+    }
 }
